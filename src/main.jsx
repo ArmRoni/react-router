@@ -5,27 +5,43 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Home from './Compontent/Home/Home';
+import About from './Compontent/About/About';
+import Contant from './Compontent/Contact/Contant';
+import Users from './Compontent/Users/Users';
+import UserDetails from './Compontent/UserDetails/UserDetails';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path:"/about",
-    element: <div>i am in the about page</div>
-  
-  },
-  {
-    path: "/contact",
-    element:<div> Call me right naw</div>
+    element: <Home></Home>,
+    children : [
+      {
+        path: "/about",
+        element:<About></About>
+      },
+      {
+        path:"/contact",
+        element:<Contant></Contant>
+      },
+      {
+        path: '/users',
+        loader:()=> fetch('https://jsonplaceholder.typicode.com/users'), //data Fetch in Json 
+        element: <Users></Users>
+      },
+       {
+        path:'/user/:params', //this is dynamic routing path (:) 
+        loader:({params})=> fetch(`https://jsonplaceholder.typicode.com/users/${params.params}`),
+        element : <UserDetails></UserDetails>
+      }
+    ]
+    
   }
 ]);
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router} />
   </StrictMode>,
 )
