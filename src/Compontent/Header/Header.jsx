@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -9,9 +9,12 @@ const Header = () => {
             <nav className="flex gap-2">
              
                 <Link to={"/"}>Home</Link>
-                <Link to={"/about"}>about</Link>
-                <Link to={"/contact"}>Contact</Link>
+                {/* <Link to={"/about"}>about</Link> */}
+                {/* <Link to={"/contact"}>Contact</Link> */}
+                <NavLink to={'/about'}> about</NavLink>
+                <NavLink to={'/contact'}> Contact</NavLink>
                 <Link to={"/users"}>Users</Link>
+                <Link to={"/posts"}>Posts</Link>
             </nav>
         
         </div>

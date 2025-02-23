@@ -7,7 +7,7 @@ const Users = () => {
     const users = useLoaderData();
     console.log(users);
     return (
-        <div className="max-w-dvh m-auto">
+        <div className="max-w-dvh m-a">
            <h2>Our Users:{users.length}</h2>  
           <div className="users">
              {
